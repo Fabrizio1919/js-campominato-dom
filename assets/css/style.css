@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 80%;
+    margin: 5rem auto;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 10);
+    border: 1px solid black;
+    aspect-ratio: 1/1;
+}
+
+.bg_blue {
+    background-color: rgb(13, 161, 248);
+}
+
+body {
+    background-color: #7fffd4;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.diffuculty {
+    width: 10%;
+    margin-left: 60%;
+}
+
+footer {
+    height: 45px;
+    background-color: white;    
+}
