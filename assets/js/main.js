@@ -11,18 +11,49 @@ function getRandomNumber(min, max) {
     return randNumb;
 }
 
+function generateBombs(totalBombs, nMax) {
+    const bombs = [];
+    while (bombs.length < totalBombs) {
+        const randomNumber = getRandomNumber(1, nMax);
+        if (!bombs.includes(randomNumber)) {
+            bombs.push(randomNumber);
+        }
+    }
+    return bombs;
+}
+
+function gameOver(bombs, i, punteggio, thisCell, totalBombs, nMax, numbCasel) {
+   
+    const messageElement = document.createElement('h3');
+    messageElement.className = 'message';
+
+    const includesBombs =bombs.includes(i)
+
+    if (includesBombs) {
+        console.log('Hai perso', punteggio);
+        thisCell.classList.add('bomb')
+    } else if (numbCasel == nMax - totalBombs)
+   { console.log('Hai vinto');
+    container.innerHTML('   Hai vinto')}
+
+}
+
+
+
 const container = document.querySelector(".container");
 const playButton = document.querySelector('.play')
 playButton.addEventListener('click', function () {
     container.innerHTML = ""
-// Preparazione di Bombe e tentativi
-    let attempts = 0;
-    const totalBombs = 16;
+    gameOver()
+    // Preparazione di Bombe e tentativi
+    /*   let attempts = 0; */
 
     const diffucultyEl = document.querySelector('.diffuculty')
     console.log(diffucultyEl);
     let nMax = diffucultyEl.value;
 
+    const totalBombs = 16;
+    const bombs = generateBombs(totalBombs, nMax)
     // creo un ciclo che sta per 100)
     for (let i = 1; i <= nMax; i++) {
         const cell = `<div class="cell" style="width: calc(100% / ${Math.sqrt(nMax)}"><p class="m-0">${i}</p></div>`;
@@ -30,17 +61,8 @@ playButton.addEventListener('click', function () {
         container.innerHTML += cell;
         const maxAttempts = nMax - totalBombs;
     }
-    const generateBombs = (totalBombs, nMax) => {
-        const bombs = [];
-        while (bombs.length < totalBombs) {
-            const randomNumber = getRandomNumber(1, nMax);
-            if (!bombs.includes(randomNumber)) {
-                bombs.push(randomNumber);
-            }
-        }
-        return bombs;
-    }
 
+    console.log(generateBombs(totalBombs, nMax));
 
     // seleziono una cella che ha classe cell e active
 
