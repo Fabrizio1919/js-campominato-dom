@@ -42,7 +42,6 @@ function gameOver(bombs, i, punteggio, thisCell, totalBombs, nMax, numbCasel) {
 }
 
 
-
 const container = document.querySelector(".container");
 const playButton = document.querySelector('.play')
 playButton.addEventListener('click', function () {
@@ -90,14 +89,16 @@ playButton.addEventListener('click', function () {
             punteggio = numbCasel
             console.log("il numero delle caselle e", numbCasel)
             if (includesBombs) {
-                console.log('Hai perso', punteggio);
-                thisCell.classList.add('bomb')
+                alert(`Hai perso, ${punteggio}`);
+                thisCell.classList.add('bomb');
+                location.reload()
             } else if (numbCasel == nMax - totalBombs) {
                 console.log('Hai vinto');
                 container.innerHTML('Hai vinto')
             }
         })
     }
+    
 })
 // creo un max numero di celle
 
