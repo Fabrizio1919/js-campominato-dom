@@ -6,7 +6,7 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed 
 
 // Creo una variabile dove salvo il container delle 100 celle (container-grid)
 
-let numbCasel = 0;
+let punteggio = 0;
 function getRandomNumber(min, max) {
     const randNumb = Math.floor(Math.random() * (max - min + 1)) + min
 
@@ -56,6 +56,7 @@ playButton.addEventListener('click', function () {
 
     const totalBombs = 16;
     const bombs = generateBombs(totalBombs, nMax)
+    console.log(bombs);
     // creo un ciclo che sta per 100)
     for (let i = 1; i <= nMax; i++) {
         const cell = `<div class="cell" style="width: calc(100% / ${Math.sqrt(nMax)}"><p class="m-0">${i}</p></div>`;
@@ -77,25 +78,31 @@ playButton.addEventListener('click', function () {
         const thisCell = cellEl[i];
         console.log(thisCell)
         thisCell.addEventListener("click", function () {
-            thisCell.classList.add("bg_blue")
+            
             // this.classList.add("active")
             console.log("Changed the color")
 
-            const messageElement = document.createElement('h3');
-            messageElement.className = 'message';
-
             const includesBombs = bombs.includes(i)
-            numbCasel = numbCasel+1;
-            punteggio = numbCasel
-            console.log("il numero delle caselle e", numbCasel)
+
             if (includesBombs) {
                 alert(`Hai perso, ${punteggio}`);
                 thisCell.classList.add('bomb');
-                location.reload()
+                setTimeout(() => {
+                    location.reload()
+                }, 1000);
             } else if (numbCasel == nMax - totalBombs) {
-                console.log('Hai vinto');
+                console.log(`Hai vinto, ${punteggio}`);
                 container.innerHTML('Hai vinto')
             }
+
+            if (!(thisCell.classList.contains('bg_blue') || thisCell.classList.contains('bomb'))) {
+                thisCell.classList.add("bg_blue")
+                punteggio++;
+                console.log(punteggio);
+                console.log("il numero delle caselle e", numbCasel)
+            }
+            
+            
         })
     }
     
