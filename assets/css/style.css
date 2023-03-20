@@ -18,6 +18,14 @@
     background-color: rgb(13, 161, 248);
 }
 
+.bomb{
+    background-color: red;
+}
+
+.disabled{
+    cursor: not-allowed;
+}
+
 body {
     background-color: #7fffd4;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
