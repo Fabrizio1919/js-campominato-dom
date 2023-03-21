@@ -5,7 +5,7 @@ Ci saranno quindi 10 caselle per ognuna delle 10 righe.
 Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.*/
 
 // Creo una variabile dove salvo il container delle 100 celle (container-grid)
-
+let numbCasel;
 let punteggio = 0;
 function getRandomNumber(min, max) {
     const randNumb = Math.floor(Math.random() * (max - min + 1)) + min
